@@ -8,18 +8,14 @@ def start_game():
     for i in range(4):
         grid.append([0]*4)
 
-        
-    add(grid)
-    for row in grid:
-         print(row)
+    condition(grid)
 
-    move(grid)
-    #add(grid)
 
-    for row in grid:
-         print(row)
-    #return grid
-
+    while not condition(grid): 
+        add(grid)
+        for row in grid:
+                print(row)
+        move(grid)
 
 def add(grid):
     while True:
@@ -141,12 +137,38 @@ def down_move(grid):
     
     print(grid)
 
+def can_merge(grid):
+     for i in range(4):
+          for j in range(4):
+               if j<3 and grid[i][j]==grid[i][j+1]:
+                    return True
+               if i<3 and grid[i][j]==grid[i+1][j]:
+                return True
 
+def isfull(grid):
+     for i in range(4):
+        for j in range(4):
+            if grid[i][j]==0:
+                  return True
+            return False
+     
+     
 
+def condition(grid):
+     for i in range(4):
+          for j in range(4):
+                if grid[i][j]==2048:
+                    print("you win")
+                if isfull(grid) and not can_merge(grid):
+                     print("Game over")
+                     return "lose"
+                return False
 
+                
 
-
-
+    
+                    
+                     
 print(start_game())
 
 
