@@ -110,17 +110,8 @@ def up_move(grid):
                         else:
                              break
     return grid
-    
-                                    
-                            
-                            
-                        
-                        
-                    
-                    
-    
 
-     
+               
 
 def down_move(grid):
     for i in range(4):
@@ -133,6 +124,26 @@ def down_move(grid):
             if i!=0:
                 non_zero.append(i)
         col=non_zero + [0] * (4-len(non_zero))
+
+        for k in range(3):
+             if col(k)==col(k+1):
+                  col[k]= col[k] + col[k+1]
+                  col[k+1]=0
+
+        non_zero=[]
+        for i in col:
+            if i!=0:
+                non_zero.append(i)
+        col=non_zero + [0] * (4-len(non_zero))
+
+        for i in range(4):
+            grid[i][j] = col[i]
+    
+    print(grid)
+
+
+
+
 
 
 
